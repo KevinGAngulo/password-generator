@@ -117,6 +117,41 @@ var specialChar = [
     }
     return passwordanswers 
   }
+  function randomselect(array){
+      var rindex=Math.floor(Math.random()*array.length)
+      var relement=array[rindex]
+      return relement
+  }
+  function generatePassword(){
+      var choices=passwordchoice()
+      var results=[]
+      var gchar=[]
+      var pchar=[]
+      if(choices.hasupper){
+          pchar=pchar.concat(upperCasedChar)
+          gchar.push(randomselect(upperCasedChar))
+      }
+      if(choices.haslower){
+        pchar=pchar.concat(lowerCasedChar)
+        gchar.push(randomselect(lowerCasedChar))
+    }
+    if(choices.hasnumber){
+        pchar=pchar.concat(numericChar)
+        gchar.push(randomselect(numericChar))
+    }
+    if(choices.hasspecialcharacters){
+        pchar=pchar.concat(specialChar)
+        gchar.push(randomselect(specialChar))
+    }
+    for(var i=0;i<choices.length;i++){
+        var mychar=randomselect(pchar)
+        results.push(mychar)
+    }
+    for(var i=0;i<gchar.length;i++){
+        results[i]=gchar[i]
+    }
+    return results.join("")
+  }
   // Assignment Code
   var generateBtn = document.querySelector("#generate");
   
